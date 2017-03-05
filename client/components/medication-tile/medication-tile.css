@@ -1,0 +1,34 @@
+.past-meds .medication-tile {
+  background-color: #d9534f;
+}
+
+.future-meds .medication-tile {
+  background-color: #428bca;
+}
+
+.medication-tile {
+  height: 160px;
+  border: 2px solid;
+  border-radius: 10px;
+
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+  font-weight: 500;
+}
+
+.medication-tile .medication-status-icon {
+  font-size: 50px;
+}
+
+.medication-tile .medication-name {
+  font-size: 40px;
+}
+
+.medication-tile .medication-info {
+  font-size: 30px;
+}

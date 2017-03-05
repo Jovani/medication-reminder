@@ -6,15 +6,21 @@
       <h1>{{ currentTime }}</h1>
   </div>
 </header>
+
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3 text-center">
-        <div ng-repeat="m in meds">
-            {{m.time}} {{m.name}} {{m.dosage}}
-        </div>
+    <div class="col-lg-6 text-center past-meds">
+      <h2>Missed Medications</h2>
+      <medication-tile ng-repeat="medication in pastMedications" medication='medication'></medication-tile>
+    </div>
+
+    <div class="col-lg-6 text-center future-meds">
+      <h2>Upcoming Medications</h2>
+      <medication-tile ng-repeat="medication in futureMedications" medication='medication'></medication-tile>
     </div>
   </div>
 </div>
+
 <footer class="footer">
   <div class="container">
       <p>© 2016 Mavencare™, made with <span class="glyphicon glyphicon-heart heart-red"></span> for better healthcare.</p>
