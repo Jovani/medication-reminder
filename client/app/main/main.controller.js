@@ -10,8 +10,11 @@ angular.module('medicationReminderApp').controller('MainCtrl', function ($scope,
     });
 
     $window.setInterval(function () {
-        $scope.currentTime = moment().format('MMMM Do YYYY, h:mm:ss a');
-        $scope.$apply();
+      var now = moment();
+
+      $scope.currentDate = now.format('dddd MMMM Do');
+      $scope.currentTime = now.format('h:mm a');
+      $scope.$apply();
     }, 1000);
 
 });
