@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('medicationReminderApp').controller('MainCtrl', function ($scope, $http, $window) {
+angular.module('medicationReminderApp').controller('MainCtrl', function ($scope, $http, $window, Modal) {
 
     var ctl = this,
         upcomingMedModal = Modal.confirm.upcomingMed(),
@@ -52,6 +52,21 @@ angular.module('medicationReminderApp').controller('MainCtrl', function ($scope,
       });
     };
 
+    // Set the selectedDate scope attribute, that'll be used with the datepicker.
+    $scope.selectedDate = new Date();
+    $scope.refreshMedications();
+
+    // Only show current time if looking at today.
+    $scope.showTime = function() {
+      return moment().isSame($scope.selectedDate, 'day');
+    };
+
+    /*
+      Watch the selectedDate attribute as it changes via use of the
+      datepicker widget.
+    */
+    $scope.$watch('selectedDate', function() {
+      $scope.refreshMedications();
     });
 
     $window.setInterval(function () {
