@@ -2,18 +2,52 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-      <h1>{{currentTime}}</h1>
+    <h2>{{ currentDate }}</h2>
+    <h1 ng-show="showTime()">{{ currentTime }}</h1>
   </div>
 </header>
+
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 col-lg-offset-3 text-center">
-        <div ng-repeat="m in meds">
-            {{m.time}} {{m.name}} {{m.dosage}}
-        </div>
+    <div class="col-lg-4 text-center past-meds">
+      <h2>Missed Medications</h2>
+      Most recent first
+      <medication-tile ng-repeat="medication in pastMedications"
+                       medication='medication'
+                       selected-date='selectedDate'
+                       refresh-medications='refreshMedications()'>
+      </medication-tile>
+    </div>
+
+    <div class="col-lg-4 text-center future-meds">
+      <h2>Upcoming Medications</h2>
+      Nearest upcoming first
+      <medication-tile ng-repeat="medication in futureMedications"
+                       medication='medication'
+                       selected-date='selectedDate'
+                       refresh-medications='refreshMedications()'>
+      </medication-tile>
+    </div>
+
+    <div class="col-lg-4 text-center complete-meds">
+      <h2>Complete Medications</h2>
+      Most recent first
+      <medication-tile ng-repeat="medication in completeMedications"
+                       medication='medication'
+                       selected-date='selectedDate'
+                       refresh-medications='refreshMedications()'>
+      </medication-tile>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 text-center calendar">
+      <div class="">
+        <datepicker ng-model="selectedDate"show-weeks="false" class=""></datepicker>
+      </div>
     </div>
   </div>
 </div>
+
 <footer class="footer">
   <div class="container">
       <p>© 2016 Mavencare™, made with <span class="glyphicon glyphicon-heart heart-red"></span> for better healthcare.</p>

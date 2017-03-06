@@ -1,0 +1,33 @@
+<div class="col-lg-12 text-center medication-tile">
+  <div class="row">
+
+    <div class="col-sm-3 text-center medication-status-icon">
+      <span class="glyphicon glyphicon-{{ tileIcon() }}"></span>
+    </div>
+
+    <div class="col-sm-9">
+
+      <div class="row">
+        <div class="col-xs-12 medication-name">
+          {{ medication.name }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 medication-info">
+          {{ medication.dosage }} at {{ medication.prettyTime }}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row" ng-if="showCompleteButton()">
+    <div class="col-sm-12 complete-button">
+      <button class='btn btn-lg btn-default'
+              ng-click='completeMed()'>
+        Complete
+      </button>
+    </div>
+  </div>
+</div>

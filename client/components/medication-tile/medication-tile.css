@@ -1,0 +1,47 @@
+.past-meds .medication-tile {
+  background-color: #d9534f;
+}
+
+.future-meds .medication-tile {
+  background-color: #428bca;
+}
+
+.complete-meds .medication-tile {
+  background-color: #5cb85c;
+}
+
+.medication-tile {
+  min-height: 160px;
+  border: 2px solid;
+  border-radius: 10px;
+
+  margin-top: 20px;
+  padding: 15px 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  color: white;
+  font-weight: 500;
+}
+
+.medication-tile .medication-status-icon {
+  font-size: 50px;
+}
+
+.medication-tile .medication-name {
+  font-size: 35px;
+}
+
+.medication-tile .medication-info {
+  font-size: 25px;
+}
+
+.medication-tile .complete-button {
+  padding-top: 15px;
+}
+
+.medication-tile .complete-button .btn {
+  border: 1px solid black;
+}

@@ -71,6 +71,76 @@ angular.module('medicationReminderApp')
               del.apply(event, args);
             });
           };
+        },
+
+        /**
+         * Create a function to open an upcoming medication confirmation modal (ex. ng-click='myModalFn(name, arg1, arg2...)')
+         * @return {Function}     - the function to open the modal (ex. myModalFn)
+         */
+        upcomingMed: function() {
+
+          /**
+           * Open a delete confirmation modal
+           * @param  {String} name    - name of the medication
+           * @param  {String} dosage  - dosage for medication in question
+           * @param  {All}            - any additional args are passed staight to del callback
+           */
+          return function() {
+            var args = Array.prototype.slice.call(arguments),
+                name = args.shift(),
+                dosage = args.shift(),
+                upcomingMedModal;
+
+            upcomingMedModal = openModal({
+              modal: {
+                dismissable: true,
+                title: 'Time to take your meds!',
+                html: "<p>It's time to take <strong>" + dosage +"</strong> of <strong>" + name + "</strong>.</p>",
+                buttons: [{
+                  classes: 'btn-default',
+                  text: 'Close',
+                  click: function(e) {
+                    upcomingMedModal.dismiss(e);
+                  }
+                }]
+              }
+            }, 'modal-warning');
+          };
+        },
+
+        /**
+         * Create a function to open a missed medication confirmation modal (ex. ng-click='myModalFn(name, arg1, arg2...)')
+         * @return {Function}     - the function to open the modal (ex. myModalFn)
+         */
+        missedMed: function() {
+
+          /**
+           * Open a delete confirmation modal
+           * @param  {String} name    - name of the medication
+           * @param  {String} dosage  - dosage for medication in question
+           * @param  {All}            - any additional args are passed staight to del callback
+           */
+          return function() {
+            var args = Array.prototype.slice.call(arguments),
+                name = args.shift(),
+                dosage = args.shift(),
+                missedMedModal;
+
+            missedMedModal = openModal({
+              modal: {
+                dismissable: true,
+                title: 'Medication missed',
+                html: "<p>You forgot to take <strong>" + dosage +"</strong> of <strong>" + name + "</strong>.</p>",
+                buttons: [{
+                  classes: 'btn-default',
+                  text: 'Close',
+                  click: function(e) {
+                    missedMedModal.dismiss(e);
+                  }
+                }]
+              }
+            }, 'modal-danger');
+          };
         }
       }
     };
